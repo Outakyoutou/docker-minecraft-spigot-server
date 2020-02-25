@@ -12,7 +12,6 @@ WORKDIR /plg
 COPY plugins/ ./
 RUN wget "https://edge.forgecdn.net/files/2844/696/worldedit-bukkit-7.1.0-beta-1.jar"
 RUN wget "https://media.forgecdn.net/files/2855/477/worldguard-bukkit-7.0.2.jar"
-RUN wget "https://www.spigotmc.org/resources/coreprotect.8631/download?version=314083"
 
 
 FROM openjdk:8-jre-alpine AS UTC
