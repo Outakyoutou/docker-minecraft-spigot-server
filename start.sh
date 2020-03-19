@@ -17,6 +17,6 @@ if [ ! -e /minecraft/eula.txt ]; then
 fi
 
 cp -f /vol/njhs/*.json /minecraft/
-ln -sf /share/default/njhs/whitelist.json /minecraft/whitelist.json
-ln -sf /share/default/njhs/ops.json /minecraft/ops.json
+ln -sf /vol/njhs/whitelist.json /minecraft/whitelist.json
+ln -sf /vol/njhs/ops.json /minecraft/ops.json
 java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
