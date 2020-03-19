@@ -10,8 +10,7 @@ RUN wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/ar
 RUN java -Xmx1024M -jar BuildTools.jar --rev $SPIGOT_VER
 WORKDIR /plg
 COPY plugins/ ./
-RUN wget "https://edge.forgecdn.net/files/2844/696/worldedit-bukkit-7.1.0-beta-1.jar"
-RUN wget "https://media.forgecdn.net/files/2855/477/worldguard-bukkit-7.0.2.jar"
+RUN wget "https://edge.forgecdn.net/files/2844/696/worldedit-bukkit-7.1.0-beta-1.jar" && wget "https://media.forgecdn.net/files/2855/477/worldguard-bukkit-7.0.2.jar"
 
 
 FROM openjdk:8-jre-alpine AS UTC

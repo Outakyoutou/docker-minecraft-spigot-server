@@ -66,26 +66,26 @@ physics:
 ignition:
     block-tnt: true
     block-tnt-block-damage: true
-    block-lighter: true
+    block-lighter: false
 fire:
     disable-lava-fire-spread: true
     disable-all-fire-spread: true
     disable-fire-spread-blocks: []
     lava-spread-blocks: []
 mobs:
-    block-creeper-explosions: true
-    block-creeper-block-damage: true
-    block-wither-explosions: true
-    block-wither-block-damage: true
-    block-wither-skull-explosions: true
-    block-wither-skull-block-damage: true
-    block-enderdragon-block-damage: true
+    block-creeper-explosions: false
+    block-creeper-block-damage: false
+    block-wither-explosions: false
+    block-wither-block-damage: false
+    block-wither-skull-explosions: false
+    block-wither-skull-block-damage: false
+    block-enderdragon-block-damage: false
     block-enderdragon-portal-creation: true
-    block-fireball-explosions: true
-    block-fireball-block-damage: true
+    block-fireball-explosions: false
+    block-fireball-block-damage: false
     anti-wolf-dumbness: false
     allow-tamed-spawns: true
-    disable-enderman-griefing: true
+    disable-enderman-griefing: false
     disable-snowman-trails: false
     block-painting-destroy: false
     block-item-frame-destroy: false
@@ -93,7 +93,7 @@ mobs:
     block-plugin-spawning: true
     block-above-ground-slimes: true
     block-other-explosions: true
-    block-zombie-door-destruction: true
+    block-zombie-door-destruction: false
     block-creature-spawn: []
 player-damage:
     disable-fall-damage: true
@@ -125,16 +125,16 @@ weather:
     always-raining: false
     always-thundering: false
 dynamics:
-    disable-mushroom-spread: true
-    disable-ice-melting: true
-    disable-snow-melting: true
-    disable-snow-formation: true
-    disable-ice-formation: true
+    disable-mushroom-spread: false
+    disable-ice-melting: false
+    disable-snow-melting: false
+    disable-snow-formation: false
+    disable-ice-formation: false
     disable-leaf-decay: false
-    disable-grass-growth: true
-    disable-mycelium-spread: true
-    disable-vine-growth: true
-    disable-soil-dehydration: true
+    disable-grass-growth: false
+    disable-mycelium-spread: false
+    disable-vine-growth: false
+    disable-soil-dehydration: false
     snow-fall-blocks: []
 blacklist:
     use-as-whitelist: false
