@@ -19,4 +19,4 @@ fi
 cp -f /vol/njhs/*.json /minecraft/
 ln -sf /json/whitelist.json /minecraft/whitelist.json
 ln -sf /json/ops.json /minecraft/ops.json
-java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+screen -dmS minecraft java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui

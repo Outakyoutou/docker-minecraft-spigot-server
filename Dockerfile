@@ -3,6 +3,8 @@ ARG SPIGOT_VER="1.15.2"
 FROM openjdk:8-jdk-alpine AS spigot
 ARG SPIGOT_VER
 
+RUN apk --update add --no-cache screen 
+
 # build spigot https://www.spigotmc.org/wiki/buildtools/
 WORKDIR /build
 RUN apk --no-cache add git=2.20.2-r0 && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx1024M -jar BuildTools.jar --rev $SPIGOT_VER
