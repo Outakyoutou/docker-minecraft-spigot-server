@@ -19,5 +19,6 @@ fi
 cp -f /vol/njhs/*.json /minecraft/
 ln -sf /json/whitelist.json /minecraft/whitelist.json
 ln -sf /json/ops.json /minecraft/ops.json
-#screen -dmS minecraft java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
-java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+apk add screen
+screen java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+#java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui

@@ -33,7 +33,6 @@ COPY ./config.yml ./plugins/PluginMetrics/
 EXPOSE 25565
 ENTRYPOINT ["./start.sh"]
 
-
 FROM UTC AS JA_JP
 
 RUN apk add --update --no-cache tzdata=2019c-r0 && \
