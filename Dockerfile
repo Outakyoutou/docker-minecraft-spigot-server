@@ -31,7 +31,7 @@ COPY --from=spigot /plg/ ./plugins/
 COPY ./config.yml ./plugins/PluginMetrics/
 
 EXPOSE 25565
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ./start.sh
 
 FROM UTC AS JA_JP
 
