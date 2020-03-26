@@ -20,10 +20,15 @@ ENV MEMORY=1024M
 
 WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
-COPY --from=spigot /build/spigot-${SPIGOT_VER}.jar ./spigot.jar && ./start.sh . && ./server.properties . && ./bukkit.yml . && --from=spigot /plg/ ./plugins/ && ./config.yml ./plugins/PluginMetrics/
+COPY --from=spigot /build/spigot-${SPIGOT_VER}.jar ./spigot.jar
+COPY ./start.sh .
+COPY ./server.properties .
+COPY ./bukkit.yml .
+COPY --from=spigot /plg/ ./plugins/ 
+COPY ./config.yml ./plugins/PluginMetrics/
 
 EXPOSE 25565
-ENTRYPOINT ./start.sh
+ENTRYPOINT ["./start.sh"]
 
 FROM UTC AS JA_JP
 
