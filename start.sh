@@ -17,8 +17,6 @@ if [ ! -e /minecraft/eula.txt ]; then
 fi
 
 cp -f /vol/njhs/*.json /minecraft/
-ln -sf /json/whitelist.json /minecraft/whitelist.json
-ln -sf /json/ops.json /minecraft/ops.json
-apk add screen
-screen -dm java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
-#java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+ln -sf /vol/njhs/whitelist.json /minecraft/whitelist.json
+ln -sf /vol/njhs/ops.json /minecraft/ops.json
+java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
