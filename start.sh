@@ -16,9 +16,9 @@ if [ ! -e /minecraft/eula.txt ]; then
   fi
 fi
 
-cp -f /vol/njhs/*.json /minecraft/
-ln -sf /vol/njhs/whitelist.json /minecraft/whitelist.json
-ln -sf /vol/njhs/ops.json /minecraft/ops.json
+cp -f /json/*.json /minecraft/
+ln -sf /json/whitelist.json /minecraft/whitelist.json
+ln -sf /json/ops.json /minecraft/ops.json
 
 #RCON PASS replace
 cp /minecraft/server.properties /minecraft/server.properties.org
