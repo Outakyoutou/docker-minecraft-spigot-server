@@ -8,7 +8,7 @@ on:
 env:
   DOCKER_UTC_PACKAGE_NAME: docker.pkg.github.com/${{ github.repository }}/minecraft-spigot-server
   DOCKER_JA_PACKAGE_NAME: docker.pkg.github.com/${{ github.repository }}/minecraft-spigot-server-jp
-  SPIGOT_VER: 1.15.1
+  SPIGOT_VER: 1.16.5
 
 jobs:
   build:
