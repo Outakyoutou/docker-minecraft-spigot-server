@@ -24,4 +24,6 @@ ln -sf /json/ops.json /minecraft/ops.json
 cp /minecraft/server.properties /minecraft/server.properties.org
 sed -e "s/REPLACEHERE/$RCON/g" /minecraft/server.properties.org > /minecraft/server.properties
 
-java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+#bukkit.yml world-container が1.16では正しく動かないのでここに入れる
+#--world-containerのオプションは必ず最後に入れる
+java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui --world-container /vol
