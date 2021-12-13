@@ -13,7 +13,7 @@ COPY plugins/ ./
 RUN wget "https://media.forgecdn.net/files/3172/946/worldedit-bukkit-7.2.2-dist.jar" && wget "https://media.forgecdn.net/files/3066/271/worldguard-bukkit-7.0.4.jar"
 
 
-FROM openjdk:8-jre-alpine AS UTC
+FROM openjdk:8-jre-alpine AS utc
 
 ARG SPIGOT_VER
 ENV MEMORY=1024M
@@ -30,7 +30,7 @@ COPY ./config.yml ./plugins/PluginMetrics/
 EXPOSE 25565
 ENTRYPOINT ["./start.sh"]
 
-FROM UTC AS JA_JP
+FROM utc AS ja_jp
 
 RUN apk add --update --no-cache tzdata && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
