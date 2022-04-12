@@ -6,7 +6,6 @@ ENV JAVA_HOME=/opt/openjdk-17
 ENV PATH=/opt/openjdk-17/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV JAVA_VERSION=17-ea+14
 
-#RUN apk --update add --no-cache screen curl jq python py-pip
 RUN apk --update add --no-cache screen
 
 # build spigot https://www.spigotmc.org/wiki/buildtools/
