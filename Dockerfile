@@ -14,7 +14,7 @@ WORKDIR /build
 RUN apk --no-cache add git && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx1024M -jar BuildTools.jar --rev $SPIGOT_VER
 WORKDIR /plg
 COPY plugins/ ./
-RUN wget "https://mediafiles.forgecdn.net/files/3697/296/worldedit-bukkit-7.2.10.jar" && wget "https://media.forgecdn.net/files/3461/546/worldguard-bukkit-7.0.6-dist.jar"
+RUN wget "https://mediafiles.forgecdn.net/files/3677/516/worldguard-bukkit-7.0.7-dist.jar" && wget "https://mediafiles.forgecdn.net/files/3922/624/worldedit-bukkit-7.2.12.jar"
 
 FROM openjdk:17-jdk-alpine AS utc
 
