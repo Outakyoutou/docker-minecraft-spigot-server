@@ -31,6 +31,7 @@ COPY --from=spigot /build/spigot-${SPIGOT_VER}.jar ./spigot.jar
 COPY ./start.sh .
 COPY ./server.properties .
 COPY ./bukkit.yml .
+COPY ./spigot.yml .
 COPY --from=spigot /plg/ ./plugins/ 
 COPY ./config.yml ./plugins/PluginMetrics/
 
