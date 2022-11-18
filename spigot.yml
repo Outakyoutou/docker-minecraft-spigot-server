@@ -25,7 +25,7 @@ settings:
       max: 2048.0
   log-villager-deaths: true
   log-named-deaths: true
-  bungeecord: false
+  bungeecord: true
   sample-count: 12
   player-shuffle: 0
   save-user-cache-on-stop-only: false
