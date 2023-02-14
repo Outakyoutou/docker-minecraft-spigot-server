@@ -17,7 +17,7 @@ COPY plugins/ ./
 #2022-10-28 survivalモードの時にworldguardが入っているとあらゆる設定が正しくても何故か被ダメなどが無効化される
 #animalはspawnするがcreatureはspawnしない。reloadすると正しくなるので設定ミスではなさそう
 #survivalならではの要素を使う場合はWG/WEを抜くの推奨？
-RUN wget "https://mediafiles.forgecdn.net/files/3677/516/worldguard-bukkit-7.0.7-dist.jar" && wget "https://mediafiles.forgecdn.net/files/3922/624/worldedit-bukkit-7.2.12.jar"
+RUN wget "https://mediafiles.forgecdn.net/files/3677/516/worldguard-bukkit-7.0.7-dist.jar" && wget "https://mediafilez.forgecdn.net/files/3697/296/worldedit-bukkit-7.2.10.jar"
 
 FROM openjdk:17-jdk-alpine AS utc
 
