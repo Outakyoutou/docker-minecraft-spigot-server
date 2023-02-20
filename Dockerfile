@@ -23,7 +23,6 @@ RUN wget "https://mediafiles.forgecdn.net/files/3677/516/worldguard-bukkit-7.0.7
 FROM openjdk:17-jdk-alpine AS utc
 
 ARG SPIGOT_VER
-ENV MEMORY=3G
 
 WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
