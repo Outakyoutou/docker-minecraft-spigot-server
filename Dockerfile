@@ -11,7 +11,7 @@ RUN apk --update add --no-cache screen
 
 # build spigot https://www.spigotmc.org/wiki/buildtools/
 WORKDIR /build
-RUN apk --no-cache add git && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx3G -jar BuildTools.jar --rev $SPIGOT_VER
+RUN apk --no-cache add git && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx1024M -jar BuildTools.jar --rev $SPIGOT_VER
 WORKDIR /plg
 COPY plugins/ ./
 
@@ -23,7 +23,7 @@ RUN wget "https://mediafiles.forgecdn.net/files/3677/516/worldguard-bukkit-7.0.7
 FROM openjdk:17-jdk-alpine AS utc
 
 ARG SPIGOT_VER
-ENV MEMORY=1024M
+ENV MEMORY=3G
 
 WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
