@@ -20,8 +20,13 @@ cp -f /json/*.json /minecraft/
 ln -sf /json/whitelist.json /minecraft/whitelist.json
 ln -sf /json/ops.json /minecraft/ops.json
 
-#RCON PASS replace
+#RCON PASS and GAMEMODE replace
 cp /minecraft/server.properties /minecraft/server.properties.org
-sed -e "s/REPLACEHERE/$RCON/g" /minecraft/server.properties.org > /minecraft/server.properties
+sed -e "s/REPLACE_RCON/$RCON/g" /minecraft/server.properties.org > /minecraft/server.properties
+sed -i "s/REPLACE_MODE/$GAMEMODE/g" /minecraft/server.properties
+sed -i "s/REPLACE_SPAWN/$SPAWN/g" /minecraft/server.properties
+sed -i "s/REPLACE_DIFFICULTY/$DIFFICULTY/g" /minecraft/server.properties
 
-java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui
+#bukkit.yml world-container が1.16では正しく動かないのでここに入れる
+#--world-containerのオプションは必ず最後に入れる
+java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui --world-container /vol
