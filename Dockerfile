@@ -11,7 +11,7 @@ RUN apk --update add --no-cache screen
 
 # build spigot https://www.spigotmc.org/wiki/buildtools/
 WORKDIR /build
-RUN apk --no-cache add git && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx1024M -jar BuildTools.jar --rev $SPIGOT_VER
+RUN apk --no-cache add git && wget "https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar" -O BuildTools.jar && java -Xmx3G -jar BuildTools.jar --rev $SPIGOT_VER
 WORKDIR /plg
 COPY plugins/ ./
 
