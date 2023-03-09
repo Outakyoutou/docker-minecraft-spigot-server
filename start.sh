@@ -29,4 +29,5 @@ sed -i "s/REPLACE_DIFFICULTY/$DIFFICULTY/g" /minecraft/server.properties
 
 #bukkit.yml world-container が1.16では正しく動かないのでここに入れる
 #--world-containerのオプションは必ず最後に入れる
-java -Xmx${MEMORY} -jar /minecraft/spigot.jar nogui --world-container /vol
+#java -Xmx${MEMORY} -jar /minecraft/paper.jar nogui --world-container /vol
+/usr/bin/screen -Dm java -Xmx${MEMORY} -jar /minecraft/paper.jar nogui --world-container /vol
