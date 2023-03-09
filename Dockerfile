@@ -15,6 +15,7 @@ FROM openjdk:17-jdk-alpine AS utc
 WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
 COPY ./start.sh .
+COPY ./paper.jar .
 COPY ./server.properties .
 COPY ./bukkit.yml .
 COPY --from=spigot /plg/ ./plugins/ 
