@@ -25,6 +25,7 @@ WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
 RUN mkdir -p ./plugins/BungeeServerSigns
 COPY --from=spigot /build/spigot-${SPIGOT_VER}.jar ./spigot.jar
+COPY ./paper.jar .
 COPY ./start.sh .
 COPY ./server.properties .
 COPY ./bukkit.yml .
