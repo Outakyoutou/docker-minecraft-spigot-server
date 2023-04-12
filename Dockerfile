@@ -8,6 +8,7 @@ RUN apk --update add --no-cache screen
 # build spigot https://www.spigotmc.org/wiki/buildtools/
 WORKDIR /plg
 COPY plugins/ ./
+COPY logs/ ./
 
 FROM openjdk:17-jdk-alpine AS utc
 

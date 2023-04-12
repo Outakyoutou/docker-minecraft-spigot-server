@@ -19,6 +19,7 @@ fi
 cp -f /json/*.json /minecraft/
 ln -sf /json/whitelist.json /minecraft/whitelist.json
 ln -sf /json/ops.json /minecraft/ops.json
+ln -sf /vol/njhs/logs/ /minecraft/logs
 
 #RCON PASS and GAMEMODE replace
 cp /minecraft/server.properties /minecraft/server.properties.org
