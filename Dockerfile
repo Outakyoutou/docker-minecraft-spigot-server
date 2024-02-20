@@ -7,7 +7,6 @@ RUN apk --update add --no-cache screen
 
 WORKDIR /plg
 COPY plugins/ ./
-COPY logs/ ./
 
 FROM openjdk:17-jdk-alpine AS utc
 
@@ -16,6 +15,7 @@ ENV MEMORY=1024M
 WORKDIR /minecraft
 RUN mkdir -p ./plugins/PluginMetrics
 RUN mkdir -p ./plugins/BungeeServerSigns
+RUN mkdir -p ./logs
 COPY ./paper.jar .
 COPY ./start.sh .
 COPY ./paper.jar .

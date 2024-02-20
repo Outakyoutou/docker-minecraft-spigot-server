@@ -28,6 +28,8 @@ sed -i "s/REPLACE_MODE/$GAMEMODE/g" /minecraft/server.properties
 sed -i "s/REPLACE_SPAWN/$SPAWN/g" /minecraft/server.properties
 sed -i "s/REPLACE_DIFFICULTY/$DIFFICULTY/g" /minecraft/server.properties
 
+ln -s logs/latest.log /vol/logs/latest.log
+
 #bukkit.yml world-container が1.16では正しく動かないのでここに入れる
 #--world-containerのオプションは必ず最後に入れる
 #/usr/bin/screen -Dm java -Xmx${MEMORY} -jar /minecraft/paper.jar nogui --world-container /vol
