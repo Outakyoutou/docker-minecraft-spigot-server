@@ -7,11 +7,11 @@ Please read and accept [Minecraft EULA](https://account.mojang.com/documents/min
 ## Usage
 
 ```
-docker run -d -e EULA=true -p 25565:25565 --name spigot docker.pkg.github.com/outakyoutou/docker-minecraft-spigot-server/minecraft-spigot-server:1.19.4
+docker run -d -e EULA=true -p 25565:25565 --name spigot docker.pkg.github.com/outakyoutou/docker-minecraft-spigot-server/minecraft-spigot-server:1.20.4
 ```
 
 With Japan Standard Time (JST)
 
 ```
-docker run -d -e EULA=true -p 25565:25565 --name spigot docker.pkg.github.com/outakyoutou/docker-minecraft-spigot-server/minecraft-spigot-server-jp:1.19.4
+docker run -d -e EULA=true -p 25565:25565 --name spigot docker.pkg.github.com/outakyoutou/docker-minecraft-spigot-server/minecraft-spigot-server-jp:1.20.4
 ```
