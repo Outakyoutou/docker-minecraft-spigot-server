@@ -18,7 +18,6 @@ RUN mkdir -p ./plugins/BungeeServerSigns
 RUN mkdir -p ./logs
 COPY ./paper.jar .
 COPY ./start.sh .
-COPY ./paper.jar .
 COPY ./server.properties .
 COPY ./bukkit.yml .
 COPY ./spigot.yml .
