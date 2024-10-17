@@ -1,35 +1,36 @@
-FROM openjdk:17-jdk-alpine AS spigot
-ENV JAVA_HOME=/opt/openjdk-17
-ENV PATH=/opt/openjdk-17/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV JAVA_VERSION=17-ea+14
+FROM alpine:3.19
 
-RUN apk --update add --no-cache screen
+ARG version=21.0.2.14.1
 
-WORKDIR /plg
-COPY plugins/ ./
+# Please note that the THIRD-PARTY-LICENSE could be out of date if the base image has been updated recently.
+# The Corretto team will update this file but you may see a few days' delay.
+RUN wget -O /THIRD-PARTY-LICENSES-20200824.tar.gz https://corretto.aws/downloads/resources/licenses/alpine/THIRD-PARTY-LICENSES-20200824.tar.gz && \
+    echo "82f3e50e71b2aee21321b2b33de372feed5befad6ef2196ddec92311bc09becb  /THIRD-PARTY-LICENSES-20200824.tar.gz" | sha256sum -c - && \
+    tar x -ovzf THIRD-PARTY-LICENSES-20200824.tar.gz && \
+    rm -rf THIRD-PARTY-LICENSES-20200824.tar.gz && \
+    wget -O /etc/apk/keys/amazoncorretto.rsa.pub https://apk.corretto.aws/amazoncorretto.rsa.pub && \
+    SHA_SUM="6cfdf08be09f32ca298e2d5bd4a359ee2b275765c09b56d514624bf831eafb91" && \
+    echo "${SHA_SUM}  /etc/apk/keys/amazoncorretto.rsa.pub" | sha256sum -c - && \
+    echo "https://apk.corretto.aws" >> /etc/apk/repositories && \
+    apk add --no-cache amazon-corretto-21=$version-r0 && \
+    rm -rf /usr/lib/jvm/java-21-amazon-corretto/lib/src.zip
 
-FROM openjdk:17-jdk-alpine AS utc
-
+ENV LANG C.UTF-8
+ENV JAVA_HOME=/usr/lib/jvm/default-jvm
+ENV PATH=$PATH:/usr/lib/jvm/default-jvm/bin
 ENV MEMORY=1024M
+ENV TZ='Asia/Tokyo'
 
 WORKDIR /minecraft
-RUN mkdir -p ./plugins/PluginMetrics
-RUN mkdir -p ./plugins/BungeeServerSigns
-RUN mkdir -p ./logs
-COPY ./paper.jar .
-COPY ./start.sh .
-COPY ./server.properties .
-COPY ./bukkit.yml .
-COPY ./spigot.yml .
-COPY --from=spigot /plg/ ./plugins/ 
-COPY ./config.yml ./plugins/PluginMetrics/
+COPY paper.jar .
+COPY start.sh .
+COPY server.properties .
+COPY *.yml .
+RUN mkdir -p /minecraft/plugins/PluginMetrics && \
+    mkdir -p /minecraft/plugins/BungeeServerSigns && \
+    mkdir -p /minecraft/logs
+COPY plugins/ /minecraft/plugins/
+COPY config.yml /minecraft/plugins/PluginMetrics/
 
 EXPOSE 25565
 ENTRYPOINT ["./start.sh"]
-
-FROM utc AS ja_jp
-
-RUN apk add --update --no-cache tzdata && \
-  cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-  echo "Asia/Tokyo" > /etc/timezone && \
-  apk del tzdata
