@@ -27,7 +27,7 @@ COPY start.sh .
 COPY server.properties .
 COPY *.yml .
 RUN mkdir -p /minecraft/plugins/PluginMetrics && \
-    mkdir -p /minecraft/plugins/BungeeServerSigns && \
+    mkdir -p /minecraft/plugins/BungeeGuard && \
     mkdir -p /minecraft/logs
 COPY plugins/ /minecraft/plugins/
 COPY config.yml /minecraft/plugins/PluginMetrics/
