@@ -1,36 +1,29 @@
-FROM alpine:3.19
+FROM eclipse-temurin:25-jdk-alpine
 
-ARG version=21.0.2.14.1
-
-# Please note that the THIRD-PARTY-LICENSE could be out of date if the base image has been updated recently.
-# The Corretto team will update this file but you may see a few days' delay.
-RUN wget -O /THIRD-PARTY-LICENSES-20200824.tar.gz https://corretto.aws/downloads/resources/licenses/alpine/THIRD-PARTY-LICENSES-20200824.tar.gz && \
-    echo "82f3e50e71b2aee21321b2b33de372feed5befad6ef2196ddec92311bc09becb  /THIRD-PARTY-LICENSES-20200824.tar.gz" | sha256sum -c - && \
-    tar x -ovzf THIRD-PARTY-LICENSES-20200824.tar.gz && \
-    rm -rf THIRD-PARTY-LICENSES-20200824.tar.gz && \
-    wget -O /etc/apk/keys/amazoncorretto.rsa.pub https://apk.corretto.aws/amazoncorretto.rsa.pub && \
-    SHA_SUM="6cfdf08be09f32ca298e2d5bd4a359ee2b275765c09b56d514624bf831eafb91" && \
-    echo "${SHA_SUM}  /etc/apk/keys/amazoncorretto.rsa.pub" | sha256sum -c - && \
-    echo "https://apk.corretto.aws" >> /etc/apk/repositories && \
-    apk add --no-cache amazon-corretto-21=$version-r0 && \
-    rm -rf /usr/lib/jvm/java-21-amazon-corretto/lib/src.zip
-
-ENV LANG C.UTF-8
-ENV JAVA_HOME=/usr/lib/jvm/default-jvm
-ENV PATH=$PATH:/usr/lib/jvm/default-jvm/bin
-ENV MEMORY=1024M
-ENV TZ='Asia/Tokyo'
+ENV LANG=C.UTF-8 \
+    JAVA_HOME=/usr/lib/jvm/default-jvm \
+    PATH=$PATH:/usr/lib/jvm/default-jvm/bin \
+    MEMORY=1024M \
+    TZ='Asia/Tokyo'
 
 WORKDIR /minecraft
-COPY paper.jar .
-COPY start.sh .
-COPY server.properties .
-COPY *.yml .
+RUN addgroup -g 1001 minecraft && \
+    adduser -u 1001 -G minecraft -s /bin/sh -D minecraft
+RUN chown -R minecraft:minecraft /minecraft
+
+USER minecraft
+
+COPY --chown=minecraft:minecraft paper.jar .
+COPY --chown=minecraft:minecraft start.sh .
+COPY --chown=minecraft:minecraft server.properties .
+COPY --chown=minecraft:minecraft *.yml .
+
 RUN mkdir -p /minecraft/plugins/PluginMetrics && \
     mkdir -p /minecraft/plugins/BungeeGuard && \
     mkdir -p /minecraft/logs
-COPY plugins/ /minecraft/plugins/
-COPY config.yml /minecraft/plugins/PluginMetrics/
+
+COPY --chown=minecraft:minecraft plugins/ /minecraft/plugins/
+COPY --chown=minecraft:minecraft config.yml /minecraft/plugins/PluginMetrics/
 
 EXPOSE 25565
 ENTRYPOINT ["./start.sh"]
